@@ -88,7 +88,7 @@ let selectOperation = [],
 
 for ( let key in operations ) {
     operationList.insertAdjacentHTML("afterbegin", `
-    <div>
+    <div class="list__items">
         <input class="checkbox" type="checkbox" data-key="${key}" id="${key}">
         <label class="label" for="${key}">${key} : ${operations[key]['name']}</label>
     </div>
@@ -176,11 +176,16 @@ function getTime() {
     let num = this.classList[1],
         resAll = 0,
         val = document.querySelector(`.value_${num}`).value,
-        range = document.querySelector(`.percent_${num}`).value,
+        range = +document.querySelector(`.percent_${num}`).value,
         out = document.querySelector(`.out_${num}`),
-        init = operations[num]['initial'],
-        time = +((val * 60) / (init * (range/100)));
+        init = operations[num]['initial'];
         // percent = +((60/(range/val)) / init);
+        
+    if (!Number.isInteger(range)) {
+        range *= 60;
+    }
+
+    let time = +((val * 60) / (init * (range/100)));
         
     if (document.querySelector(`.button__change-${num}`).classList.contains('button__change--percent')) {
         out.innerHTML = `${time.toFixed(5)} %`;     

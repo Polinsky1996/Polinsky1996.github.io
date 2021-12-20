@@ -19,10 +19,11 @@ button {
   }
 
 .wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding: 0 10px 50px 10px;
+    padding: 0 10px 0 10px;
 }
 
 .footer {
@@ -35,12 +36,28 @@ button {
 }
 
 .form__list {
-    height: 100px;
-    overflow: auto;
+    width: 100%;
 }
 
 .menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 3;
+
     display: none;
+    height: 96vh;
+    width: 90%;
+    padding: 20px 10px;
+    overflow: auto;
+    background-color: green;
+}
+
+.list__items {
+    width: 100%;
+    margin: 0.4rem;
+    
 }
 
 .menu--visible {
@@ -49,6 +66,14 @@ button {
 
 .checkbox {
     display: none;
+    
+}
+
+.label {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1.5rem;
 }
 
 .label--active {
@@ -57,14 +82,15 @@ button {
 
 .button__menu {
     position: absolute;
-    bottom: 15px;
-    right: 10px;
+    bottom: 20%;
+    right: 50%;
+    transform: translateX(50%);
 
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 
     background-color: #027ab9;
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4);
@@ -83,6 +109,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 100%;
     margin: 20px 0;
     padding: 10px;
     background-color: #E0E0E0;
@@ -173,6 +200,7 @@ button {
 .input--block {
     display: block;
     max-width: 30%;
+    font-size: 1.5rem;
 }
 
 .input--block:nth-child(2) {
@@ -181,5 +209,13 @@ button {
 
 .out {
     padding: 10px 0;
+    margin-bottom: 10px;
     height: 1rem;
+    font-size: 1.3rem;
+}
+
+.button__result {
+    padding: 5px 30px;
+    background-color: #046ca5;
+    border-radius: 8px;
 }
